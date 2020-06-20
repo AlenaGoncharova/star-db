@@ -47,7 +47,7 @@ export default class SwapiService {
     return item.url.match(idRegExp)[1];
   }
 
-  _transformDataPlanet(planet) {
+  _transformDataPlanet = (planet) => {
     return {
       id: this._extractId(planet),
       name: planet.name,
@@ -57,7 +57,7 @@ export default class SwapiService {
     }
   }
 
-  _transformDataStarship(starship) {
+  _transformDataStarship = (starship) => {
     return {
       id: this._extractId(starship),
       name: starship.name,
@@ -71,7 +71,7 @@ export default class SwapiService {
     }
   }
 
-  _transformDataPerson(person) {
+  _transformDataPerson = (person) => {
     return {
       id: this._extractId(person),
       name: person.name,
