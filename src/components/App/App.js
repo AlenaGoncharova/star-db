@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 
 import Header from '../Header';
 import RandomPlanet from '../RandomPlanet';
-import ItemList from '../ItemList';
-import PersonDetails from '../PersonDetails';
 import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
 import PeoplePage from '../PeoplePage';
+import SwapiService from '../../services/swapiService';
 
 import './App.css';
 
 export default class App extends Component {
+
+  swapiService = new SwapiService();
 
   state = {
     showRandomPlanet: true,
