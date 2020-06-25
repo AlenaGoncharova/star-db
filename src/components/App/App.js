@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Header from '../Header';
 import RandomPlanet from '../RandomPlanet';
 import ErrorButton from '../ErrorButton';
-// import PeoplePage from '../PeoplePage';
 import ErrorBoundary from '../ErrorBoundary';
 
 import './App.css';
@@ -14,12 +13,14 @@ import ItemList from '../ItemList';
 import SwapiService from '../../services/swapiService';
 import { PersonList, PlanetList, StarshipList, PersonDetails, PlanetDetails, StarshipDetails } from '../sw-components';
 
+import { SwapiServiceProvider } from '../SwapiServiceContext';
+
 export default class App extends Component {
 
   swapiService = new SwapiService();
 
   state = {
-    showRandomPlanet: true
+    showRandomPlanet: true,
   };
 
   toggleRandomPlanet = () => {
@@ -47,7 +48,8 @@ export default class App extends Component {
       <ItemDetails
         itemId={11}
         getData={getPerson}
-        getImageUrl={getPersonImage} >
+        getImageUrl={getPersonImage}
+      >
 
         <Record field="gender" label="Gender" />
         <Record field="eyeColor" label="Eye Color" />
@@ -59,7 +61,8 @@ export default class App extends Component {
       <ItemDetails
         itemId={5}
         getData={getStarship}
-        getImageUrl={getStarshipImage}>
+        getImageUrl={getStarshipImage}
+      >
 
         <Record field="model" label="Model" />
         <Record field="length" label="Length" />
@@ -69,22 +72,24 @@ export default class App extends Component {
 
     return (
       <ErrorBoundary>
-        <div className="stardb-app">
-          <Header />
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className="stardb-app">
+            <Header />
 
-          <PersonDetails itemId={11} />
+            <PersonDetails itemId={11} />
 
-          <PlanetDetails itemId={5} />
+            <PlanetDetails itemId={5} />
 
-          <StarshipDetails itemId={9} />
+            <StarshipDetails itemId={9} />
 
-          <PersonList />
+            <PersonList />
 
-          <StarshipList />
+            <StarshipList />
 
-          <PlanetList />
+            <PlanetList />
 
-        </div>
+          </div>
+        </SwapiServiceProvider>
       </ErrorBoundary>
     );
   }
