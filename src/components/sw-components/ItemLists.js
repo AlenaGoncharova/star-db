@@ -1,15 +1,6 @@
 import React from 'react';
 import ItemList from '../ItemList';
 import { withData, withSwapiService } from '../HOCHelper';
-import SwapiService from '../../services/swapiService';
-
-const swapiService = new SwapiService();
-
-const {
-  getAllPeople,
-  getAllStarships,
-  getAllPlanets
-} = swapiService;
 
 const withChildFunction = (Wrapped, fn) => {
   return (props) => {
