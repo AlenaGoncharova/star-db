@@ -1,16 +1,6 @@
 import React from 'react';
 import ItemList from '../ItemList';
-import { withData, withSwapiService, compose } from '../HOCHelper';
-
-const withChildFunction = (fn) => (Wrapped) => {
-  return (props) => {
-    return (
-      <Wrapped {...props}>
-        {fn}
-      </Wrapped>
-    )
-  };
-};
+import { withData, withSwapiService, compose, withChildFunction } from '../HOCHelper';
 
 const renderName = ({ name }) => <span>{name}</span>;
 const renderModelAndName = ({ model, name}) => <span>{name} ({model})</span>;
