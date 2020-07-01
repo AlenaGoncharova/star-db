@@ -47,7 +47,7 @@ export default class App extends Component {
               <Switch>
                 <Route path="/" render={() => <h2>Welcome to StarDB!</h2>} exact />
                 <Route path="/people/:id?" component={PeoplePage} />
-                <Route path="/planets" component={PlanetsPage} />
+                <Route path="/planets/:id?" component={PlanetsPage} />
                 <Route path="/starships" exact component={StarshipsPage} />
                 <Route
                   path="/starships/:id"
