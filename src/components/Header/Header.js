@@ -22,6 +22,9 @@ const Header = ({ onServiceChange }) => {
         <li>
           <Link to="/login">Login</Link>
         </li>
+        <li>
+          <Link to="/secret">Secret</Link>
+        </li>
       </ul>
 
       <button
