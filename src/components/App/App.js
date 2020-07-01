@@ -8,6 +8,8 @@ import DummySwapiService from '../../services/dummySwapiService';
 import { SwapiServiceProvider } from '../SwapiServiceContext';
 import { PeoplePage, PlanetsPage, StarshipsPage } from '../pages';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './App.css';
 
 export default class App extends Component {
@@ -28,15 +30,18 @@ export default class App extends Component {
     return (
       <ErrorBoundary>
         <SwapiServiceProvider value={this.state.swapiService}>
-          <div className="stardb-app">
-            <Header onServiceChange={this.onServiceChange}/>
+          <Router>
+            <div className="stardb-app">
+              <Header onServiceChange={this.onServiceChange}/>
+              <RandomPlanet />
 
-            <RandomPlanet />
-            <PeoplePage />
-            <PlanetsPage />
-            <StarshipsPage />
+              <Route path="/" render={() => <h2>Welcome to StarDB!</h2>} exact />
+              <Route path="/people" component={PeoplePage} />
+              <Route path="/planets" component={PlanetsPage} />
+              <Route path="/starships" component={StarshipsPage} />
 
-          </div>
+            </div>
+          </Router>
         </SwapiServiceProvider>
       </ErrorBoundary>
     );
